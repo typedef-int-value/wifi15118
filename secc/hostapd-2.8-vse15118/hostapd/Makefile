@@ -1,5 +1,5 @@
 ifndef CC
-CC=gcc
+CC=arm-linux-gnueabihf-gcc
 endif
 
 ifndef CFLAGS
@@ -1287,7 +1287,7 @@ install: $(addprefix $(DESTDIR)$(BINDIR)/,$(ALL))
 BCHECK=../src/drivers/build.hostapd
 
 hostapd: $(BCHECK) $(OBJS)
-	$(Q)$(CC) $(LDFLAGS) -o hostapd $(OBJS) $(LIBS)
+	$(Q)$(CC) $(LDFLAGS) -o hostapd $(OBJS) $(LIBS) -lpthread -ldl
 	@$(E) "  LD " $@
 
 ifdef CONFIG_WPA_TRACE
